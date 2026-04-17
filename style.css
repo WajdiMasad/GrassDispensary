@@ -215,7 +215,7 @@ address { font-style: normal; }
    HERO
    ============================== */
 .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; padding-top: 5rem; text-align: center; }
-.hero__bg { position: absolute; inset: 0; background-size: cover; background-position: center; filter: brightness(0.5); z-index: 0; }
+.hero__bg { position: absolute; inset: 0; background-size: 90%; background-position: center calc(50% - 180px); filter: brightness(0.5); z-index: 0; }
 .hero__overlay { display: none; }
 .hero__content { position: relative; z-index: 2; width: 100%; max-width: 900px; padding: 4rem 2rem; }
 .hero__eyebrow { display: inline-flex; align-items: center; font-size: 0.85rem; font-weight: 900; letter-spacing: 0.25em; text-transform: uppercase; color: var(--green); margin-bottom: 1.5rem; background: #000; padding: 0.5rem 1rem; }
