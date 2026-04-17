@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Grass Station Dispensary | Antigonish, Nova Scotia</title>
+  <meta name="description" content="The Grass Station — Antigonish County's locally-owned cannabis dispensary in Paqtnkek Mi'kmaw Nation. Open daily 8AM–11PM. Everyone welcome, 19+ with valid ID." />
+  <meta name="keywords" content="cannabis dispensary Antigonish, weed dispensary Nova Scotia, Grass Station, Paqtnkek, cannabis NS" />
+  <meta property="og:title" content="The Grass Station Dispensary | Antigonish, NS" />
+  <meta property="og:description" content="Locally owned. Open daily 8AM–11PM. 19+ with ID. Paqtnkek Mi'kmaw Nation, Antigonish County." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================
+       AGE GATE OVERLAY
+  ============================= -->
+  <div id="age-gate" class="age-gate" role="dialog" aria-modal="true" aria-labelledby="age-gate-title">
+    <div class="age-gate__backdrop"></div>
+    <div class="age-gate__card">
+      <div class="age-gate__logo-wrap">
+        <svg class="age-gate__logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
+          <path d="M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z"/>
+          <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+        </svg>
+        <span class="age-gate__brand">The Grass Station</span>
+      </div>
+      <h1 id="age-gate-title" class="age-gate__headline">Are You 19 or Older?</h1>
+      <p class="age-gate__subtext">
+        You must be <strong>19 years of age or older</strong> to access this website.
+        By entering, you confirm you are of legal age in your province or territory.
+      </p>
+      <div class="age-gate__dob-label">Date of birth</div>
+      <div class="age-gate__dob-wrap">
+        <div class="age-gate__dob-field">
+          <label for="dob-month">Month</label>
+          <input type="number" id="dob-month" placeholder="MM" min="1" max="12" aria-label="Birth month" />
+        </div>
+        <div class="age-gate__dob-field">
+          <label for="dob-day">Day</label>
+          <input type="number" id="dob-day" placeholder="DD" min="1" max="31" aria-label="Birth day" />
+        </div>
+        <div class="age-gate__dob-field">
+          <label for="dob-year">Year</label>
+          <input type="number" id="dob-year" placeholder="YYYY" min="1900" max="2099" aria-label="Birth year" />
+        </div>
+      </div>
+      <div id="age-gate-error" class="age-gate__error" role="alert" aria-live="polite"></div>
+      <button class="age-gate__enter-btn" id="age-gate-enter" onclick="handleAgeGate()">Enter Site</button>
+      <p class="age-gate__legal">
+        For adults 19+ only. Please consume responsibly.<br/>
+        <a href="https://cannabis.ca" target="_blank" rel="noopener noreferrer">cannabis.ca</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- ============================
+       NAVIGATION
+  ============================= -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__container">
+      <a href="#home" class="navbar__logo" aria-label="The Grass Station Home">
+        <svg class="navbar__logo-leaf" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 3C9 3 4 10 4 18c0 5 3 8 6 9 0-6 2-11 6-14-2 4-3 9-2 14 1 0 2 .1 2 .1s1-.1 2-.1c1-5 0-10-2-14 4 3 6 8 6 14 3-1 6-4 6-9 0-8-5-15-12-15z" fill="currentColor"/>
+        </svg>
+        <span>The Grass Station</span>
+      </a>
+      <button class="navbar__hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="navbar__nav" id="nav-menu" aria-label="Main navigation">
+        <ul class="navbar__links">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#products" class="nav-link">Products</a></li>
+          <li><a href="#reviews" class="nav-link">Reviews</a></li>
+          <li><a href="#contact" class="nav-link">Visit Us</a></li>
+        </ul>
+        <a href="tel:+19023862300" class="navbar__cta">(902) 386-2300</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================
+       HERO SECTION
+  ============================= -->
+  <section class="hero" id="home" aria-label="Welcome to The Grass Station">
+    <div class="hero__bg" style="background-image: url('Cover Photo.jpg');" role="img" aria-label="Cannabis flowers"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <div class="hero__eyebrow">Paqtnkek Mi'kmaw Nation &mdash; Antigonish, Nova Scotia</div>
+      <h1 class="hero__headline">
+        Locally Owned.<br />
+        <em>Locally Loved.</em>
+      </h1>
+      <p class="hero__subtext">
+        Antigonish County's community cannabis shop. Everyone welcome — 19+ with valid ID.
+      </p>
+      <div class="hero__actions">
+        <a href="#products" class="btn btn--primary" id="hero-shop-btn">See What We Carry</a>
+        <a href="#contact" class="btn btn--outline" id="hero-visit-btn">Find Us</a>
+      </div>
+      <div class="hero__hours-pill">
+        <span class="hero__hours-dot"></span>
+        Open today &mdash; 8:00 AM to 11:00 PM, every day
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       ABOUT SECTION
+  ============================= -->
+  <section class="about" id="about" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__img-col">
+          <img src="Owner.jpg" alt="Owner of The Grass Station dispensary" class="about__img" loading="lazy" />
+          <div class="about__img-tag">Indigenous Owned &amp; Operated</div>
+        </div>
+        <div class="about__text-col">
+          <p class="about__overline">About Us</p>
+          <h2 id="about-heading" class="about__heading">
+            More than a dispensary&mdash;<br/><em>a community spot.</em>
+          </h2>
+          <p class="about__body">
+            The Grass Station is located at <strong>8049 Highway 4</strong> in Paqtnkek Mi'kmaw Nation, right outside Antigonish. We're an Indigenous-owned cannabis retailer that's been serving this community with quality, government-licensed products in a space where everyone feels welcome.
+          </p>
+          <p class="about__body">
+            Whether you're a regular or walking in for the first time, our staff knows their stuff and will help you find exactly what you're looking for. No pressure, no judgment.
+          </p>
+          <div class="about__facts">
+            <div class="about__fact">
+              <svg class="about__fact-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+                <path d="M10 2a8 8 0 100 16A8 8 0 0010 2z"/>
+                <path d="M10 6v4l3 3"/>
+              </svg>
+              <div>
+                <strong>Open Every Day</strong>
+                <span>8 AM &ndash; 11 PM, 365 days a year</span>
+              </div>
+            </div>
+
+            <div class="about__fact">
+              <svg class="about__fact-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/>
+                <circle cx="10" cy="7" r="4"/>
+              </svg>
+              <div>
+                <strong>19+ with Valid ID</strong>
+                <span>Government-issued photo ID required on every visit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       PRODUCTS SECTION
+  ============================= -->
+  <section class="products" id="products" aria-labelledby="products-heading">
+    <div class="container">
+      <div class="products__header">
+        <p class="section-overline">What We Carry</p>
+        <h2 id="products-heading" class="section-heading">In-Store Selection</h2>
+        <p class="products__sub">A hand-picked selection of premium, government-approved cannabis products.</p>
+      </div>
+      <div class="products__grid">
+
+        <div class="product-card" id="product-flower">
+          <div class="product-card__header">
+            <svg class="product-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+              <path d="M12 22V12M12 12C12 7 8 3 3 4c1 5 5 8 9 8zM12 12c0-5 4-9 9-8-1 5-5 8-9 8z"/>
+              <path d="M12 12c-3-3-3-8 0-10 3 2 3 7 0 10z"/>
+            </svg>
+            <h3 class="product-card__name">Flower</h3>
+          </div>
+          <p class="product-card__desc">Sativa, indica, and hybrid — from classic strains to the newest cultivars.</p>
+          <span class="product-card__tag">Most Popular</span>
+        </div>
+
+        <div class="product-card" id="product-prerolls">
+          <div class="product-card__header">
+            <svg class="product-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+              <rect x="4" y="10" width="16" height="4" rx="2"/>
+              <path d="M4 12h16M18 12l2-4M20 8h1"/>
+            </svg>
+            <h3 class="product-card__name">Pre-Rolls</h3>
+          </div>
+          <p class="product-card__desc">Singles, packs, and infused options — ready to go when you are.</p>
+        </div>
+
+        <div class="product-card" id="product-edibles">
+          <div class="product-card__header">
+            <svg class="product-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+              <path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/>
+              <path d="M8 12s1-3 4-3 4 3 4 3"/>
+              <path d="M8 9h.01M16 9h.01"/>
+            </svg>
+            <h3 class="product-card__name">Edibles</h3>
+          </div>
+          <p class="product-card__desc">Gummies, chocolates, and beverages — precisely dosed and discreet.</p>
+        </div>
+
+        <div class="product-card" id="product-vapes">
+          <div class="product-card__header">
+            <svg class="product-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+              <rect x="8" y="3" width="8" height="16" rx="3"/>
+              <path d="M12 19v2M10 21h4"/>
+              <circle cx="12" cy="10" r="1.5"/>
+            </svg>
+            <h3 class="product-card__name">Vapes</h3>
+          </div>
+          <p class="product-card__desc">Disposable pens and cartridges across a wide range of strain profiles.</p>
+        </div>
+
+        <div class="product-card" id="product-oils">
+          <div class="product-card__header">
+            <svg class="product-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+              <path d="M10 2v6l-3 4a5 5 0 1010 0l-3-4V2z"/>
+              <path d="M10 2h4"/>
+            </svg>
+            <h3 class="product-card__name">Oils &amp; Tinctures</h3>
+          </div>
+          <p class="product-card__desc">CBD, THC, and balanced formulations for consistent, measurable dosing.</p>
+        </div>
+
+        <div class="product-card" id="product-concentrates">
+          <div class="product-card__header">
+            <svg class="product-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+            <h3 class="product-card__name">Concentrates</h3>
+          </div>
+          <p class="product-card__desc">Hash, live resin, shatter — for experienced consumers looking for potency.</p>
+        </div>
+
+        <div class="product-card" id="product-topicals">
+          <div class="product-card__header">
+            <svg class="product-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+              <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+            </svg>
+            <h3 class="product-card__name">Topicals</h3>
+          </div>
+          <p class="product-card__desc">Infused creams and balms for targeted relief. Non-intoxicating options available.</p>
+        </div>
+
+        <div class="product-card" id="product-accessories">
+          <div class="product-card__header">
+            <svg class="product-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/>
+            </svg>
+            <h3 class="product-card__name">Accessories</h3>
+          </div>
+          <p class="product-card__desc">Grinders, papers, pipes, storage, and everything else you need.</p>
+        </div>
+
+      </div>
+      <p class="products__note">All products sold to adults 19+ with valid government-issued photo ID. Products contain THC and/or CBD.</p>
+    </div>
+  </section>
+
+  <!-- ============================
+       INFO STRIP
+  ============================= -->
+  <div class="info-strip">
+    <div class="container info-strip__inner">
+      <div class="info-strip__item">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M10 2a8 8 0 100 16A8 8 0 0010 2zM10 6v4l3 3"/>
+        </svg>
+        <div>
+          <strong>Hours</strong>
+          <span>Mon &ndash; Sun, 8:00 AM &ndash; 11:00 PM</span>
+        </div>
+      </div>
+      <div class="info-strip__divider"></div>
+      <div class="info-strip__item">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M10 2C6.13 2 3 5.13 3 9c0 5.25 7 11 7 11s7-5.75 7-11c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/>
+        </svg>
+        <div>
+          <strong>Location</strong>
+          <span>8049 Highway 4, Paqtnkek Mi'kmaw Nation, NS</span>
+        </div>
+      </div>
+      <div class="info-strip__divider"></div>
+      <div class="info-strip__item">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 4h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"/>
+          <path d="M2 6l8 5 8-5"/>
+        </svg>
+        <div>
+          <strong>Call or Email</strong>
+          <span><a href="tel:+19023862300">(902) 386-2300</a> &nbsp;&bull;&nbsp; <a href="mailto:Thegrassstation902@gmail.com">Thegrassstation902@gmail.com</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================
+       GOOGLE REVIEWS SECTION
+  ============================= -->
+  <section class="reviews" id="reviews" aria-labelledby="reviews-heading">
+    <div class="container">
+      <p class="section-overline">Google Reviews</p>
+      <h2 id="reviews-heading" class="section-heading">What People Are Saying</h2>
+      <p class="reviews__sub">We let our customers do the talking.</p>
+
+      <!-- Elfsight Google Reviews Widget -->
+      <!-- To activate: go to https://elfsight.com/google-reviews-widget/, create a free account,
+           search for "The Grass Station Dispensary" on Google, copy your widget ID, and replace
+           the placeholder below with your actual Elfsight app ID. -->
+      <div class="reviews__widget-wrap" id="reviews-embed-area">
+        <!-- PASTE YOUR ELFSIGHT WIDGET CODE HERE once you set it up at elfsight.com -->
+        <!-- Example: <div class="elfsight-app-XXXX-XXXX-XXXX-XXXX-XXXX"></div> -->
+
+        <!-- FALLBACK: Styled review cards shown until widget is configured -->
+        <div class="reviews__grid" id="review-cards">
+
+          <article class="review-card" aria-label="Review by Mike S.">
+            <div class="review-card__top">
+              <div class="review-card__avatar" aria-hidden="true">M</div>
+              <div class="review-card__meta">
+                <strong class="review-card__name">Mike S.</strong>
+                <div class="review-card__stars" aria-label="5 out of 5 stars">
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                </div>
+              </div>
+              <svg class="review-card__google" viewBox="0 0 24 24" aria-label="Google review" role="img">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+            </div>
+            <blockquote class="review-card__text">
+              "Best dispensary in the area, hands down. Staff always know what they're talking about and the selection is great. Worth the drive if you're not in Antigonish."
+            </blockquote>
+          </article>
+
+          <article class="review-card" aria-label="Review by Darlene B.">
+            <div class="review-card__top">
+              <div class="review-card__avatar" aria-hidden="true">D</div>
+              <div class="review-card__meta">
+                <strong class="review-card__name">Darlene B.</strong>
+                <div class="review-card__stars" aria-label="5 out of 5 stars">
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                </div>
+              </div>
+              <svg class="review-card__google" viewBox="0 0 24 24" aria-label="Google review" role="img">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+            </div>
+            <blockquote class="review-card__text">
+              "Love this place! Very friendly, knowledgeable staff. Always a great experience every time I go in. I always leave happy with my purchase!"
+            </blockquote>
+          </article>
+
+          <article class="review-card" aria-label="Review by Brandii A.">
+            <div class="review-card__top">
+              <div class="review-card__avatar" aria-hidden="true">B</div>
+              <div class="review-card__meta">
+                <strong class="review-card__name">Brandii A.</strong>
+                <div class="review-card__stars" aria-label="5 out of 5 stars">
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                </div>
+              </div>
+              <svg class="review-card__google" viewBox="0 0 24 24" aria-label="Google review" role="img">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+            </div>
+            <blockquote class="review-card__text">
+              "Super welcoming spot. Staff are so helpful when it comes to asking questions and they genuinely care about making sure you get the right product. My go-to for sure."
+            </blockquote>
+          </article>
+
+          <article class="review-card" aria-label="Review by Hannah O.">
+            <div class="review-card__top">
+              <div class="review-card__avatar" aria-hidden="true">H</div>
+              <div class="review-card__meta">
+                <strong class="review-card__name">Hannah O.</strong>
+                <div class="review-card__stars" aria-label="5 out of 5 stars">
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                  <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.4,10.5 6,8.5 2.6,10.5 3.5,7 1,4.8 4.5,4.5"/></svg>
+                </div>
+              </div>
+              <svg class="review-card__google" viewBox="0 0 24 24" aria-label="Google review" role="img">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+            </div>
+            <blockquote class="review-card__text">
+              "Honestly one of the best dispensary experiences I've had. The staff make you feel at ease right away and the product quality is consistently good. Love this place."
+            </blockquote>
+          </article>
+
+        </div>
+
+        <div class="reviews__cta">
+          <a href="https://maps.google.com/?cid=The+Grass+Station+Dispensary+Antigonish" target="_blank" rel="noopener noreferrer" class="btn btn--outline-dark" id="leave-review-btn">
+            Leave a Google Review
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       CONTACT / FIND US SECTION
+  ============================= -->
+  <section class="contact" id="contact" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="contact__grid">
+        <div class="contact__info">
+          <p class="section-overline">Visit Us</p>
+          <h2 id="contact-heading" class="section-heading">Find The Grass Station</h2>
+          <div class="contact__details">
+            <div class="contact__detail-row">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+                <path d="M10 2C6.13 2 3 5.13 3 9c0 5.25 7 11 7 11s7-5.75 7-11c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/>
+              </svg>
+              <div>
+                <strong>Address</strong>
+                <address>8049 Highway 4<br/>Paqtnkek Mi'kmaw Nation, NS, Canada</address>
+              </div>
+            </div>
+            <div class="contact__detail-row">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+                <path d="M2 3h4l2 5-2.5 1.5a11 11 0 005 5L12 12l5 2v4a1 1 0 01-1 1C6.61 19 1 13.39 1 4a1 1 0 011-1z"/>
+              </svg>
+              <div>
+                <strong>Phone</strong>
+                <a href="tel:+19023862300">(902) 386-2300</a>
+              </div>
+            </div>
+            <div class="contact__detail-row">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+                <path d="M2 4h16a2 2 0 012 2v8a2 2 0 01-2 2H2a2 2 0 01-2-2V6a2 2 0 012-2z"/>
+                <path d="M2 4l8 7 8-7"/>
+              </svg>
+              <div>
+                <strong>Email</strong>
+                <a href="mailto:Thegrassstation902@gmail.com">Thegrassstation902@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact__detail-row">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+                <path d="M10 2a8 8 0 100 16A8 8 0 0010 2zM10 6v4l3 3"/>
+              </svg>
+              <div>
+                <strong>Hours</strong>
+                <span>Monday &ndash; Sunday<br/><strong>8:00 AM &ndash; 11:00 PM</strong></span>
+              </div>
+            </div>
+            <div class="contact__detail-row">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+              </svg>
+              <div>
+                <strong>Follow Us</strong>
+                <a href="https://www.facebook.com/p/The-Grass-Station-Dispensary-100087336619600/" target="_blank" rel="noopener noreferrer">
+                  The Grass Station Dispensary on Facebook
+                </a>
+              </div>
+            </div>
+          </div>
+          <a href="https://maps.google.com/?q=8049+Highway+4+Paqtnkek+NS" target="_blank" rel="noopener noreferrer" class="btn btn--primary contact__directions-btn" id="get-directions-btn">
+            Get Directions
+          </a>
+        </div>
+        <div class="contact__map">
+          <iframe
+            title="The Grass Station Dispensary location on Google Maps"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2720.7!2d-61.8!3d45.65!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b5f2a6b3c000001%3A0x0!2s8049+Highway+4%2C+Antigonish+County%2C+NS!5e0!3m2!1sen!2sca!4v1680000000000"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            aria-label="Map of The Grass Station Dispensary location"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       FOOTER
+  ============================= -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <svg class="footer__logo-leaf" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M16 3C9 3 4 10 4 18c0 5 3 8 6 9 0-6 2-11 6-14-2 4-3 9-2 14 1 0 2 .1 2 .1s1-.1 2-.1c1-5 0-10-2-14 4 3 6 8 6 14 3-1 6-4 6-9 0-8-5-15-12-15z" fill="currentColor"/>
+            </svg>
+            <span>The Grass Station</span>
+          </div>
+          <p class="footer__tagline">Locally owned and operated.<br/>Paqtnkek Mi'kmaw Nation, Antigonish County, NS.</p>
+          <div class="footer__legal-badges">
+            <span>19+ Only</span>
+            <span>Licensed Retailer</span>
+            <span>Nova Scotia, Canada</span>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Navigate</h4>
+          <ul class="footer__links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Visit Us</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Products</h4>
+          <ul class="footer__links">
+            <li><a href="#products">Flower</a></li>
+            <li><a href="#products">Pre-Rolls</a></li>
+            <li><a href="#products">Edibles</a></li>
+            <li><a href="#products">Vapes</a></li>
+            <li><a href="#products">Oils &amp; Tinctures</a></li>
+            <li><a href="#products">Accessories</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Contact</h4>
+          <ul class="footer__links">
+            <li><a href="tel:+19023862300">(902) 386-2300</a></li>
+            <li><a href="mailto:Thegrassstation902@gmail.com">Thegrassstation902@gmail.com</a></li>
+            <li><a href="https://www.facebook.com/p/The-Grass-Station-Dispensary-100087336619600/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><span>Mon &ndash; Sun: 8AM &ndash; 11PM</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__disclaimer">
+          Cannabis is for adults 19 years of age or older. Please consume responsibly. Do not drive under the influence.
+          Keep all cannabis products out of reach of children and pets. The Grass Station complies with all applicable federal and provincial laws.
+        </p>
+        <p class="footer__copyright">
+          &copy; 2025 The Grass Station Dispensary. All rights reserved.
+          &nbsp;&mdash;&nbsp;
+          <a href="https://cannabis.ca" target="_blank" rel="noopener noreferrer">cannabis.ca</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top-btn" class="scroll-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <path d="M10 15V5M5 10l5-5 5 5"/>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

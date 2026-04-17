@@ -1,0 +1,400 @@
+/* ===================================================
+   THE GRASS STATION DISPENSARY — URBN LEAF STYLE
+   Streetwear, Solid Colors, Sharp Corners
+   =================================================== */
+
+/* --- Reset & Base --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* URBN LEAF STYLE PALETTE */
+  --bg-deep:      #0b0d0c; 
+  --bg-dark:      #121413;
+  --bg-card:      #000000;
+  
+  --border-light: rgba(255, 255, 255, 0.1);
+  --border-glow:  transparent;
+  
+  /* Brand Colors */
+  --green:        #2eb053; /* UrbnLeaf vibrant green */
+  --orange:       #e1663b; /* Accent for secondary tags */
+  
+  /* Typography Colors */
+  --text-main:    #ffffff;
+  --text-muted:   #888888;
+  --text-sub:     #cccccc;
+
+  /* Typography */
+  --font-sans: 'Inter', 'Montserrat', -apple-system, sans-serif;
+
+  /* Effects */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-sm: 0 5px 15px rgba(0,0,0,1);
+
+  /* Radius - sharply squared for streetwear vibe */
+  --r-sm: 0px;
+  --r-md: 0px;
+  --r-lg: 0px;
+  --r-pill: 0px;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-deep);
+  /* Repeating cannabis leaf pattern overlay */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='160' height='160'><path fill='rgba(255,255,255,0.015)' d='M16 3C9 3 4 10 4 18c0 5 3 8 6 9 0-6 2-11 6-14-2 4-3 9-2 14 1 0 2 .1 2 .1s1-.1 2-.1c1-5 0-10-2-14 4 3 6 8 6 14 3-1 6-4 6-9 0-8-5-15-12-15z'/></svg>");
+  background-attachment: fixed;
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; height: auto; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+address { font-style: normal; }
+
+/* --- Shared Layout & Typography --- */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-heading {
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--text-main);
+  line-height: 1.15;
+  margin-bottom: 3rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.section-heading::before,
+.section-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-light);
+  max-width: 100px;
+}
+.section-heading em { font-style: normal; color: var(--green); }
+.section-overline { display: none; }
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border-radius: var(--r-pill);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.3s var(--ease-out);
+}
+
+.btn--primary {
+  background: var(--green);
+  color: #fff;
+}
+.btn--primary:hover {
+  background: #259645;
+  transform: translateY(-2px);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--text-main);
+  border: 2px solid var(--text-main);
+  border-radius: 50px; /* Force pills on specific outline buttons like Navbar/Hero */
+}
+.btn--outline:hover {
+  background: var(--text-main);
+  color: var(--bg-deep);
+}
+
+.btn--outline-dark {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--text-main);
+}
+.btn--outline-dark:hover {
+  background: var(--text-main);
+  color: var(--bg-deep);
+}
+
+/* ==============================
+   AGE GATE (Solid Block)
+   ============================== */
+.age-gate {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+}
+.age-gate__backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+}
+.age-gate__card {
+  position: relative; z-index: 1;
+  background: var(--bg-card);
+  border: 4px solid var(--green);
+  border-radius: 0;
+  padding: 4rem 3rem;
+  max-width: 500px; width: 100%;
+  text-align: center;
+  animation: gateIn 0.5s var(--ease-out) both;
+}
+@keyframes gateIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.age-gate__logo-wrap { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 2rem; }
+.age-gate__logo-icon { width: 36px; height: 36px; color: var(--green); }
+.age-gate__brand { font-size: 1.2rem; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-main); }
+.age-gate__headline { font-family: var(--font-sans); font-size: 2.5rem; font-weight: 900; color: var(--text-main); margin-bottom: 1rem; text-transform: uppercase; text-align: center;}
+.age-gate__subtext { font-size: 0.95rem; color: var(--text-sub); line-height: 1.7; margin-bottom: 2.5rem; }
+.age-gate__dob-label { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 900; color: var(--green); margin-bottom: 0.75rem; text-align: left; }
+.age-gate__dob-wrap { display: flex; gap: 1rem; margin-bottom: 0.5rem; }
+.age-gate__dob-field { display: flex; flex-direction: column; gap: 0.4rem; flex: 1; }
+.age-gate__dob-field label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); font-weight: 800; text-align: left; }
+.age-gate__dob-field input {
+  background: var(--bg-deep); border: 2px solid var(--border-light);
+  padding: 1rem 0.5rem; color: var(--text-main); font-size: 1.2rem; font-weight: 800; font-family: var(--font-sans); text-align: center; transition: all 0.3s;
+  width: 100%; -moz-appearance: textfield; border-radius: 0;
+}
+.age-gate__dob-field input:focus { outline: none; border-color: var(--green); }
+.age-gate__error { min-height: 1.5rem; font-size: 0.85rem; color: #ff5e5e; margin: 0.75rem 0 1.5rem; text-align: left; font-weight: bold; }
+.age-gate__enter-btn {
+  width: 100%; padding: 1.2rem; background: var(--green); color: #fff; border: none; border-radius: 0; font-family: var(--font-sans); font-size: 1rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.3s; margin-bottom: 1.5rem;
+}
+.age-gate__enter-btn:hover { background: #259645; }
+.age-gate__legal { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+.age-gate__legal a { color: var(--green); text-decoration: underline; }
+.age-gate.hidden { animation: gateOut 0.3s var(--ease-out) forwards; }
+@keyframes gateOut { to { opacity: 0; pointer-events: none; visibility: hidden; } }
+.age-gate__card.denied { border-color: #ef4444; }
+.age-denied__icon { font-size: 5rem; margin-bottom: 1.5rem; color: #ef4444; }
+.age-denied__title { font-family: var(--font-sans); font-size: 2.2rem; font-weight: 900; color: #ef4444; margin-bottom: 1rem; text-transform: uppercase; }
+.age-denied__msg { font-size: 1rem; color: var(--text-sub); line-height: 1.7; margin-bottom: 1.5rem; font-weight: bold; }
+
+/* ==============================
+   NAVBAR
+   ============================== */
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 0; transition: all 0.3s; border-bottom: 1px solid var(--border-light); background: var(--bg-card); }
+.navbar__container { display: flex; align-items: center; justify-content: space-between; }
+.navbar__logo { display: flex; align-items: center; gap: 0.75rem; font-size: 1.25rem; font-weight: 900; color: var(--text-main); letter-spacing: 0.1em; text-transform: uppercase; }
+.navbar__logo-leaf { width: 30px; height: 30px; color: var(--text-main); }
+.navbar__nav { display: flex; align-items: center; gap: 3rem; }
+.navbar__links { display: flex; align-items: center; gap: 2rem; }
+.nav-link { font-size: 0.85rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-main); transition: color 0.3s; }
+.nav-link:hover, .nav-link.active { color: var(--green); }
+.navbar__cta {
+  font-size: 0.85rem; font-weight: 800; letter-spacing: 0.05em; color: var(--text-main); background: transparent; padding: 0.5rem 1.5rem; border-radius: 50px; border: 2px solid var(--text-main); transition: all 0.3s;
+}
+.navbar__cta:hover { background: var(--text-main); color: var(--bg-dark); }
+.navbar__hamburger span { background: var(--text-main); }
+
+/* ==============================
+   HERO
+   ============================== */
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; padding-top: 5rem; text-align: center; }
+.hero__bg { position: absolute; inset: 0; background-size: cover; background-position: center; filter: brightness(0.5); z-index: 0; }
+.hero__overlay { display: none; }
+.hero__content { position: relative; z-index: 2; width: 100%; max-width: 900px; padding: 4rem 2rem; }
+.hero__eyebrow { display: inline-flex; align-items: center; font-size: 0.85rem; font-weight: 900; letter-spacing: 0.25em; text-transform: uppercase; color: var(--green); margin-bottom: 1.5rem; background: #000; padding: 0.5rem 1rem; }
+.hero__headline { font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; line-height: 1; color: var(--text-main); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: -0.02em; }
+.hero__headline em { font-style: normal; color: var(--green); }
+.hero__subtext { font-size: 1.15rem; color: #fff; font-weight: 800; line-height: 1.6; margin-bottom: 2.5rem; max-width: 600px; margin-inline: auto; text-transform: uppercase; }
+.hero__actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+.hero__hours-pill { display: none; }
+
+/* ==============================
+   ABOUT
+   ============================== */
+.about { padding: 8rem 0; background: var(--bg-dark); border-top: 2px solid var(--border-light); }
+.about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.about__img { width: 100%; height: 500px; object-fit: cover; object-position: top; filter: contrast(1.1); }
+.about__img-tag { display: none; }
+.about__overline { font-size: 0.8rem; font-weight: 900; letter-spacing: 0.1em; color: var(--green); text-transform: uppercase; margin-bottom: 0.5rem; }
+.about__heading { font-size: clamp(2.5rem, 5vw, 3rem); font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 1.5rem; }
+.about__heading em { font-style: normal; color: var(--green); }
+.about__body { font-size: 1.05rem; color: var(--text-sub); line-height: 1.8; margin-bottom: 1.5rem; font-weight: 500; }
+.about__body strong { color: var(--text-main); font-weight: 800; }
+.about__facts { margin-top: 3rem; display: grid; gap: 1rem; }
+.about__fact { display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border-light); }
+.about__fact-icon { width: 32px; height: 32px; color: var(--green); flex-shrink: 0; }
+.about__fact strong { display: block; font-weight: 900; text-transform: uppercase; font-size: 1.1rem; }
+.about__fact span { color: var(--text-muted); font-size: 0.9rem; font-weight: 600; }
+
+/* ==============================
+   PRODUCTS (Urbn Leaf Tile Replica)
+   ============================== */
+.products { padding: 8rem 0; }
+.products__header { text-align: center; margin-bottom: 4rem; }
+.products__sub { display: none; }
+.products__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+
+/* The core of the visual rewrite */
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.product-card:hover { transform: translateY(-5px); border-color: var(--green); }
+
+/* The top "Tag" block */
+.product-card__tag {
+  order: -1; /* Pushes the tag to the very top in flex column */
+  background: var(--orange);
+  color: #000;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+/* If no tag exists, we need a default top block for visual consistency */
+.product-card:not(:has(.product-card__tag))::before {
+  content: 'PREMIUM';
+  background: #333;
+  color: #fff;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Middle content area */
+.product-card__header { padding: 3rem 1rem 1rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+.product-card__icon { width: 64px; height: 64px; color: #fff; }
+.product-card__name { font-size: clamp(1.2rem, 6vw, 1.7rem); font-weight: 900; text-transform: uppercase; letter-spacing: 0.02em; word-wrap: break-word; hyphens: auto; }
+.product-card__desc { padding: 0 1rem 2.5rem; font-size: 0.9rem; font-weight: 600; color: var(--text-muted); margin-bottom: auto; line-height: 1.4; }
+
+/* Synthetic "BUY NOW" button at bottom */
+.product-card::after {
+  content: 'SHOP NOW';
+  display: block;
+  background: var(--green);
+  color: #000;
+  width: 100%;
+  padding: 1rem;
+  font-weight: 900;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  margin-top: auto;
+  transition: background 0.3s;
+}
+.product-card:hover::after { background: #4ceb77; }
+
+.products__note { text-align: center; margin-top: 4rem; font-size: 0.85rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+
+/* ==============================
+   INFO STRIP
+   ============================== */
+.info-strip { background: var(--bg-card); border-top: 2px solid var(--border-light); border-bottom: 2px solid var(--border-light); padding: 3rem 0; }
+.info-strip__inner { display: flex; justify-content: space-between; gap: 2rem; }
+.info-strip__item { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.75rem; }
+.info-strip__item svg { width: 36px; height: 36px; color: #fff; }
+.info-strip__item strong { font-size: 1rem; font-weight: 900; text-transform: uppercase; color: var(--green); }
+.info-strip__item span { font-size: 0.95rem; font-weight: 700; color: var(--text-sub); }
+
+/* ==============================
+   REVIEWS & CONTACT
+   ============================== */
+.reviews, .contact { padding: 8rem 0; }
+.reviews { background: var(--bg-dark); }
+.contact { background: var(--bg-card); border-top: 1px solid var(--border-light); }
+
+.reviews__sub { display: none; }
+.reviews__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.review-card { background: var(--bg-card); border: 1px solid var(--border-light); padding: 2.5rem; transition: transform 0.3s; }
+.review-card:hover { transform: translateY(-5px); border-color: var(--text-main); }
+.review-card__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.review-card__meta { flex: 1; margin-left: 1rem; }
+.review-card__name { font-weight: 900; text-transform: uppercase; font-size: 1.1rem; }
+.review-card__stars { display: flex; gap: 2px; margin-top: 4px; }
+.review-card__stars svg { width: 16px; height: 16px; color: var(--green); }
+.review-card__avatar { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: #333; color: #fff; font-weight: 900; font-size: 1.4rem; }
+.review-card__google { width: 28px; height: 28px; }
+.review-card__text { font-size: 1.05rem; font-weight: 600; line-height: 1.6; color: var(--text-sub); }
+
+.contact__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+.contact__detail-row { display: flex; align-items: flex-start; gap: 1.25rem; margin-bottom: 1.5rem; }
+.contact__detail-row svg { width: 28px; height: 28px; color: var(--green); flex-shrink: 0; }
+.contact__detail-row strong { display: block; font-size: 0.9rem; font-weight: 900; text-transform: uppercase; color: var(--text-main); margin-bottom: 0.2rem; }
+.contact__detail-row a, .contact__detail-row span, .contact__detail-row address { font-weight: 600; color: var(--text-sub); transition: color 0.2s; }
+.contact__detail-row a:hover { color: var(--green); }
+.contact__map { min-height: 400px; width: 100%; border: 1px solid var(--border-light); }
+
+/* ==============================
+   FOOTER
+   ============================== */
+.footer { background: #000; padding: 6rem 0 3rem; border-top: 4px solid var(--green); }
+.footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+.footer__logo { display: flex; align-items: center; gap: 0.75rem; font-size: 1.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 1rem; }
+.footer__logo-leaf { width: 36px; height: 36px; color: var(--green); }
+.footer__tagline { font-size: 1rem; font-weight: 700; color: var(--text-muted); margin-bottom: 2rem; }
+.footer__legal-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.footer__legal-badges span { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; padding: 0.4rem 0.8rem; background: #222; color: #fff; }
+.footer__col-title { font-size: 1.1rem; font-weight: 900; text-transform: uppercase; color: var(--text-main); margin-bottom: 1.5rem; }
+.footer__links { display: flex; flex-direction: column; gap: 1rem; }
+.footer__links a, .footer__links span { font-weight: 700; color: var(--text-muted); transition: color 0.3s; }
+.footer__links a:hover { color: var(--text-main); }
+.footer__bottom { padding-top: 2rem; border-top: 1px solid #222; text-align: center; color: var(--text-muted); font-weight: 600; font-size: 0.85rem; }
+.footer__disclaimer { margin-bottom: 1rem; max-width: 800px; margin-inline: auto; }
+
+/* ==============================
+   HELPERS & MEDIA QUERIES
+   ============================== */
+.navbar__hamburger { display: none; background: transparent; border: none; cursor: pointer; flex-direction: column; gap: 6px; padding: 0.5rem; }
+.navbar__hamburger span { display: block; width: 28px; height: 3px; background: var(--text-main); transition: all 0.3s; }
+.scroll-top { position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px; background: var(--text-main); color: #000; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; pointer-events: none; transition: all 0.3s; z-index: 99; }
+.scroll-top.visible { opacity: 1; pointer-events: auto; }
+.scroll-top:hover { transform: translateY(-3px); background: var(--green); color: #fff; }
+.scroll-top svg { width: 24px; height: 24px; }
+
+@media (max-width: 1024px) {
+  .hero__headline { font-size: 4rem; }
+  .about__grid { grid-template-columns: 1fr; gap: 4rem; }
+  .about__img { height: 400px; }
+  .contact__grid { justify-content: center; grid-template-columns: 1fr; }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .hero__headline { font-size: 3rem; }
+  .info-strip__inner { flex-direction: column; }
+  .navbar__nav { position: absolute; top: 100%; left: 0; right: 0; background: #000; flex-direction: column; padding: 2rem; gap: 2rem; border-bottom: 1px solid #333; display: none; }
+  .navbar__nav.active { display: flex; }
+  .navbar__hamburger { display: flex; }
+  .navbar__links { flex-direction: column; gap: 1.5rem; align-items: center; }
+  .footer__grid { grid-template-columns: 1fr; }
+}
+
+.reveal, .reveal-left, .reveal-right { opacity: 0; transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
+.reveal { transform: translateY(30px); }
+.reveal-left { transform: translateX(-30px); }
+.reveal-right { transform: translateX(30px); }
+.reveal.visible, .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: translate(0); }
