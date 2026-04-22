@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>420 Gallery — 7th Anniversary | The Grass Station Dispensary</title>
+  <meta name="description" content="Seven years of 420 at The Grass Station Dispensary. Browse photos from our 7th anniversary celebration in Paqtnkek Mi'kmaw Nation, Antigonish County." />
+  <meta name="keywords" content="420 celebration, Grass Station Dispensary, cannabis event Antigonish, 420 anniversary, Paqtnkek" />
+  <meta property="og:title" content="420 Gallery — 7th Anniversary | The Grass Station" />
+  <meta property="og:description" content="Seven years strong. Browse photos from our 7th annual 420 celebration." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================
+       AGE GATE OVERLAY
+  ============================= -->
+  <div id="age-gate" class="age-gate" role="dialog" aria-modal="true" aria-labelledby="age-gate-title">
+    <div class="age-gate__backdrop"></div>
+    <div class="age-gate__card">
+      <div class="age-gate__logo-wrap">
+        <svg class="age-gate__logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
+          <path d="M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z"/>
+          <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+        </svg>
+        <span class="age-gate__brand">The Grass Station</span>
+      </div>
+      <h1 id="age-gate-title" class="age-gate__headline">Are You 19 or Older?</h1>
+      <p class="age-gate__subtext">
+        You must be <strong>19 years of age or older</strong> to access this website.
+        By entering, you confirm you are of legal age in your province or territory.
+      </p>
+      <div class="age-gate__dob-label">Date of birth</div>
+      <div class="age-gate__dob-wrap">
+        <div class="age-gate__dob-field">
+          <label for="dob-month">Month</label>
+          <input type="number" id="dob-month" placeholder="MM" min="1" max="12" aria-label="Birth month" />
+        </div>
+        <div class="age-gate__dob-field">
+          <label for="dob-day">Day</label>
+          <input type="number" id="dob-day" placeholder="DD" min="1" max="31" aria-label="Birth day" />
+        </div>
+        <div class="age-gate__dob-field">
+          <label for="dob-year">Year</label>
+          <input type="number" id="dob-year" placeholder="YYYY" min="1900" max="2099" aria-label="Birth year" />
+        </div>
+      </div>
+      <div id="age-gate-error" class="age-gate__error" role="alert" aria-live="polite"></div>
+      <button class="age-gate__enter-btn" id="age-gate-enter" onclick="handleAgeGate()">Enter Site</button>
+      <p class="age-gate__legal">
+        For adults 19+ only. Please consume responsibly.<br/>
+        <a href="https://cannabis.ca" target="_blank" rel="noopener noreferrer">cannabis.ca</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- ============================
+       NAVIGATION
+  ============================= -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__container container">
+      <a href="index.html" class="navbar__logo" aria-label="The Grass Station Home">
+        <svg class="navbar__logo-leaf" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 3C9 3 4 10 4 18c0 5 3 8 6 9 0-6 2-11 6-14-2 4-3 9-2 14 1 0 2 .1 2 .1s1-.1 2-.1c1-5 0-10-2-14 4 3 6 8 6 14 3-1 6-4 6-9 0-8-5-15-12-15z" fill="currentColor"/>
+        </svg>
+        <span>The Grass Station</span>
+      </a>
+      <button class="navbar__hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="navbar__nav" id="nav-menu" aria-label="Main navigation">
+        <ul class="navbar__links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#products" class="nav-link">Products</a></li>
+          <li><a href="gallery.html" class="nav-link active">420 Gallery</a></li>
+          <li><a href="index.html#reviews" class="nav-link">Reviews</a></li>
+          <li><a href="index.html#contact" class="nav-link">Visit Us</a></li>
+        </ul>
+        <a href="tel:+19023862300" class="navbar__cta">(902) 386-2300</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================
+       GALLERY HERO BANNER
+  ============================= -->
+  <section class="gallery-hero" aria-label="420 7th Anniversary">
+    <div class="gallery-hero__bg"></div>
+    <div class="gallery-hero__content">
+      <div class="gallery__anniversary-badge">7th Anniversary</div>
+      <h1 class="gallery-hero__headline">
+        4/20 at<br/><em>The Grass Station</em>
+      </h1>
+      <p class="gallery-hero__sub">
+        Seven years strong. Since day one, we've celebrated 4/20 with the community that built us.
+        From the loyal regulars to the first-timers who walked through the doors &mdash; 
+        this one's for all of you. Here's a look at how we rang in year seven.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================
+       PHOTO GALLERY
+  ============================= -->
+  <section class="gallery" id="gallery" aria-labelledby="gallery-heading">
+    <div class="container">
+
+      <!-- Toolbar -->
+      <div class="gallery__toolbar">
+        <span class="gallery__count">58 Photos &mdash; April 20, 2026</span>
+        <button class="gallery__view-toggle" id="gallery-toggle-btn" aria-label="Toggle grid size">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Photo Grid -->
+      <div class="gallery__grid" id="gallery-grid">
+        <div class="gallery__item" data-index="0"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1794.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="1"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1799.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="2"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1807.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="3"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1814.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="4"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1821.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="5"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1825.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="6"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1832.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="7"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1835.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="8"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1839.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="9"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1842.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="10"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1847.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="11"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1857.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="12"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1860.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="13"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1868.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="14"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1878.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="15"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1890.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="16"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1891.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="17"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1913.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="18"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1916.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="19"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1919.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="20"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1937.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="21"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1966.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="22"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1971.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="23"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1978.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="24"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1983.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="25"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1984.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="26"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1985.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="27"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1987.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="28"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_1995.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="29"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_2010.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="30"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_2019.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="31"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_2026.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="32"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_2033.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="33"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_2045.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="34"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_2056.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="35"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_2063.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="36"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_2077.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="37"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_2086.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="38"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_2089.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="39"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_2116.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="40"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_2158.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="41"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/D3S_2167.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="42"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/NB3_4215.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="43"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/NB3_4233.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="44"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/NB3_4238.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="45"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/NB3_4253.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="46"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/NB3_4254.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="47"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/NB3_4267.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="48"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/NB3_4273.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="49"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/NB3_4281.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="50"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/NB3_4290.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="51"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/NB3_4306.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="52"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/NB3_4309.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="53"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/NB3_4327.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="54"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/NB3_4336.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="55"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/NB3_4350.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="56"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/NB3_4377.JPG" alt="420 celebration photo" loading="lazy" /></div>
+        <div class="gallery__item" data-index="57"><img src="wetransfer_grass-station-4-20_2026-04-22_0024/NB3_4427.JPG" alt="420 celebration photo" loading="lazy" /></div>
+      </div>
+
+      <!-- Back to Home CTA -->
+      <div class="gallery__cta">
+        <a href="index.html" class="btn btn--outline-dark">← Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX OVERLAY -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <div class="lightbox__backdrop"></div>
+    <button class="lightbox__close" id="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Previous photo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="lightbox__content">
+      <img class="lightbox__img" id="lightbox-img" src="" alt="Full size photo" />
+      <div class="lightbox__counter" id="lightbox-counter"></div>
+    </div>
+    <button class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Next photo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <!-- ============================
+       FOOTER
+  ============================= -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <svg class="footer__logo-leaf" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M16 3C9 3 4 10 4 18c0 5 3 8 6 9 0-6 2-11 6-14-2 4-3 9-2 14 1 0 2 .1 2 .1s1-.1 2-.1c1-5 0-10-2-14 4 3 6 8 6 14 3-1 6-4 6-9 0-8-5-15-12-15z" fill="currentColor"/>
+            </svg>
+            <span>The Grass Station</span>
+          </div>
+          <p class="footer__tagline">Locally owned and operated.<br/>Paqtnkek Mi'kmaw Nation, Antigonish County, NS.</p>
+          <div class="footer__legal-badges">
+            <span>19+ Only</span>
+            <span>Licensed Retailer</span>
+            <span>Nova Scotia, Canada</span>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Navigate</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="gallery.html">420 Gallery</a></li>
+            <li><a href="index.html#reviews">Reviews</a></li>
+            <li><a href="index.html#contact">Visit Us</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Products</h4>
+          <ul class="footer__links">
+            <li><a href="index.html#products">Flower</a></li>
+            <li><a href="index.html#products">Pre-Rolls</a></li>
+            <li><a href="index.html#products">Edibles</a></li>
+            <li><a href="index.html#products">Vapes</a></li>
+            <li><a href="index.html#products">Oils &amp; Tinctures</a></li>
+            <li><a href="index.html#products">Accessories</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Contact</h4>
+          <ul class="footer__links">
+            <li><a href="tel:+19023862300">(902) 386-2300</a></li>
+            <li><a href="mailto:Thegrassstation902@gmail.com">Thegrassstation902@gmail.com</a></li>
+            <li><a href="https://www.facebook.com/p/The-Grass-Station-Dispensary-100087336619600/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><span>Mon &ndash; Sun: 8AM &ndash; 11PM</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__disclaimer">
+          Cannabis is for adults 19 years of age or older. Please consume responsibly. Do not drive under the influence.
+          Keep all cannabis products out of reach of children and pets. The Grass Station complies with all applicable federal and provincial laws.
+        </p>
+        <p class="footer__copyright">
+          &copy; 2025 The Grass Station Dispensary. All rights reserved.
+          &nbsp;&mdash;&nbsp;
+          <a href="https://cannabis.ca" target="_blank" rel="noopener noreferrer">cannabis.ca</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top-btn" class="scroll-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <path d="M10 15V5M5 10l5-5 5 5"/>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -312,6 +312,337 @@ address { font-style: normal; }
 .products__note { text-align: center; margin-top: 4rem; font-size: 0.85rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
 
 /* ==============================
+   420 — 7TH ANNIVERSARY GALLERY
+   ============================== */
+.gallery {
+  padding: 4rem 0 8rem;
+  background: var(--bg-deep);
+  border-top: 2px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gallery Hero Banner (standalone page) */
+.gallery-hero {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10rem 2rem 4rem;
+  overflow: hidden;
+  background: var(--bg-card);
+  border-bottom: 4px solid var(--green);
+}
+.gallery-hero__bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(46,176,83,0.08) 0%, transparent 65%);
+}
+.gallery-hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+.gallery-hero__headline {
+  font-family: var(--font-sans);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+.gallery-hero__headline em {
+  font-style: normal;
+  color: var(--green);
+}
+.gallery-hero__sub {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-sub);
+  line-height: 1.8;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Gallery CTA row */
+.gallery__cta {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+/* Ambient smoke glow behind the section */
+.gallery::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(46, 176, 83, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.gallery__header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+/* Animated Anniversary Badge */
+.gallery__anniversary-badge {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #000;
+  background: var(--green);
+  padding: 0.6rem 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  animation: badgePulse 3s ease-in-out infinite;
+}
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(46, 176, 83, 0.4); }
+  50%      { box-shadow: 0 0 30px 10px rgba(46, 176, 83, 0.15); }
+}
+
+.gallery__intro {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-sub);
+  line-height: 1.8;
+}
+
+/* Toolbar row */
+.gallery__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.gallery__count {
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+.gallery__view-toggle {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.gallery__view-toggle svg { width: 24px; height: 24px; color: var(--text-muted); }
+.gallery__view-toggle:hover { border-color: var(--green); }
+.gallery__view-toggle:hover svg { color: var(--green); }
+
+/* Photo Grid — default 4 columns */
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  transition: all 0.4s var(--ease-out);
+}
+.gallery__grid.large-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* Gallery Items */
+.gallery__item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.03);
+  opacity: 0;
+  transform: scale(0.95);
+  animation: galleryReveal 0.6s var(--ease-out) forwards;
+}
+
+/* Staggered entry — CSS-only for first 20, JS handles the rest */
+.gallery__item:nth-child(1)  { animation-delay: 0.02s; }
+.gallery__item:nth-child(2)  { animation-delay: 0.04s; }
+.gallery__item:nth-child(3)  { animation-delay: 0.06s; }
+.gallery__item:nth-child(4)  { animation-delay: 0.08s; }
+.gallery__item:nth-child(5)  { animation-delay: 0.10s; }
+.gallery__item:nth-child(6)  { animation-delay: 0.12s; }
+.gallery__item:nth-child(7)  { animation-delay: 0.14s; }
+.gallery__item:nth-child(8)  { animation-delay: 0.16s; }
+.gallery__item:nth-child(9)  { animation-delay: 0.18s; }
+.gallery__item:nth-child(10) { animation-delay: 0.20s; }
+.gallery__item:nth-child(11) { animation-delay: 0.22s; }
+.gallery__item:nth-child(12) { animation-delay: 0.24s; }
+.gallery__item:nth-child(n+13) { animation-delay: 0.26s; }
+
+@keyframes galleryReveal {
+  to { opacity: 1; transform: scale(1); }
+}
+
+.gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-out), filter 0.5s;
+  filter: brightness(0.85);
+}
+.gallery__item:hover img {
+  transform: scale(1.08);
+  filter: brightness(1);
+}
+.gallery__item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.4) 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.gallery__item:hover::after {
+  opacity: 1;
+}
+
+/* Feature tiles — make certain images span wider for visual variety */
+.gallery__item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery__item:nth-child(8) { grid-column: span 2; }
+.gallery__item:nth-child(15) { grid-column: span 2; grid-row: span 2; }
+.gallery__item:nth-child(25) { grid-column: span 2; }
+.gallery__item:nth-child(35) { grid-column: span 2; grid-row: span 2; }
+.gallery__item:nth-child(45) { grid-column: span 2; }
+
+/* ==============================
+   LIGHTBOX
+   ============================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out);
+}
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+}
+.lightbox__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  z-index: 3;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+  line-height: 1;
+}
+.lightbox__close:hover { color: var(--green); }
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.lightbox__nav:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: #000;
+}
+.lightbox__nav svg { width: 28px; height: 28px; }
+.lightbox__nav--prev { left: 2rem; }
+.lightbox__nav--next { right: 2rem; }
+
+.lightbox__content {
+  position: relative;
+  z-index: 2;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lightbox__img {
+  max-width: 90vw;
+  max-height: 82vh;
+  object-fit: contain;
+  animation: lightboxZoom 0.35s var(--ease-out);
+}
+@keyframes lightboxZoom {
+  from { transform: scale(0.9); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.lightbox__counter {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Gallery responsive */
+@media (max-width: 1024px) {
+  .gallery__grid { grid-template-columns: repeat(3, 1fr); }
+  .gallery__grid.large-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .gallery__grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
+  .gallery__grid.large-grid { grid-template-columns: repeat(2, 1fr); }
+  /* Reset spans on mobile for cleaner 2-col */
+  .gallery__item:nth-child(1),
+  .gallery__item:nth-child(8),
+  .gallery__item:nth-child(15),
+  .gallery__item:nth-child(25),
+  .gallery__item:nth-child(35),
+  .gallery__item:nth-child(45) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  /* Keep first image featured on mobile */
+  .gallery__item:nth-child(1) {
+    grid-column: span 2;
+    aspect-ratio: 16 / 9;
+  }
+  .lightbox__nav--prev { left: 0.5rem; }
+  .lightbox__nav--next { right: 0.5rem; }
+  .lightbox__nav { width: 44px; height: 44px; }
+}
+
+/* ==============================
    INFO STRIP
    ============================== */
 .info-strip { background: var(--bg-card); border-top: 2px solid var(--border-light); border-bottom: 2px solid var(--border-light); padding: 3rem 0; }
